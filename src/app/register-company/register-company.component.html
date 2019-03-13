@@ -1,0 +1,34 @@
+<section class="block block-mt block-mt">
+  <div class="container">
+    <div class="title-group line-default">
+      <h1 class="selected">register company</h1>
+      
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <form [formGroup]='Company' class="box p-40"><!-- Nav tabs --><!-- Tab panes -->
+          <input type="text" maxlength="20" class="form-item" placeholder="Company" name="nameCompany" formControlName="nameCompany">
+          <input type="text" maxlength="80" class="form-item" placeholder="Adress" name="adress" formControlName="adress">
+          <input type="text" maxlength="80" class="form-item" placeholder="other Adress" name="otherAdress" formControlName="otherAdress">
+          <input type="text" maxlength="8" minlength="8" class="form-item" placeholder="Phone" name="phone" formControlName="phone">
+          <input type="text" maxlength="40" class="form-item" placeholder="Email" name="email" formControlName="email">
+          <select class="form-item" name="size" formControlName="size">
+            <option disabled>Choose a size</option>
+            <option value="[0..9]">Very small company</option>
+            <option value="[10..99]">Small business</option>
+            <option value="[100..999]">Big business</option>
+            <option value="1000+">Very large company</option>
+          </select>
+          <input type="text" maxlength="80" class="form-item" placeholder="website" name="website" formControlName="website">
+          <input type="text" maxlength="80" class="form-item" placeholder="facebook" name="facebook" formControlName="facebook">
+          <input type="text" maxlength="80" class="form-item" placeholder="linkedin" name="linkedin" formControlName="linkedin">
+          <input type="password" maxlength="20" class="form-item" placeholder="Password" name="passwordv" formControlName="passwordv">
+          <input type="password" maxlength="20" class="form-item" placeholder="Confrim password" name="password" formControlName="password">
+
+          <div class="form-group"></div>
+          <button (click)="Register(Company)" [disabled]="Company.invalid" class="ht-btn bg-4f84c4 m-t-20">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
