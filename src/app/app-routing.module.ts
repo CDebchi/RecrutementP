@@ -4,6 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { RegisterProfilComponent } from './register-profil/register-profil.component';
 import { RegisterCompanyComponent } from './register-company/register-company.component';
 import { LoginComponent } from './login/login.component';
+import { CompanyComponent } from './company/company.component';
+import { HomeCompanyComponent } from './company/home-company/home-company.component';
+import { PostJobComponent } from './company/post-job/post-job.component';
+import { ListJobsComponent } from './company/list-jobs/list-jobs.component';
+import { JobDetailComponent } from './company/job-detail/job-detail.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -30,6 +36,32 @@ const routes: Routes = [
     path:'Login',
     component:LoginComponent,
     data:{title:'Login'}
+  },
+  {
+    path : 'Company',
+    component : CompanyComponent,
+    children : [
+      {
+        path : 'CompanyHome',
+        component : HomeCompanyComponent,
+        data : {title : 'Company Dashbord'}
+      },
+      {
+        path : 'PostJob',
+        component : PostJobComponent,
+        data : {title : 'post Job'}
+      },
+      {
+        path : 'ListJob',
+        component : ListJobsComponent,
+        data : {title : 'List Of Jobs'},
+      },
+      {
+        path : 'JobDetail',
+        component : JobDetailComponent,
+        data : {title : 'Job Detail'}
+      }
+    ]
   }
 
 ];

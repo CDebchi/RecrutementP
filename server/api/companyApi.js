@@ -8,9 +8,23 @@ var Offre = require('../models/offreSchema');
 var auth = require('../auth/auth-jwt').authenticate;
 var jwt = require ('jsonwebtoken');
 var passport = require('passport');
+var multer  = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'upload/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+  });
+var upload = multer({
+    storage: storage
+  })
 
 
-
+  router.post('/upload',  upload.single('file'), async (req, res, next) => {
+    res.send(req.file)
+   });
 
 
 
@@ -32,7 +46,7 @@ router.get('/getAllCompany',passport.authenticate('bearer', {session:false}), fu
     });
 });
 
-router.post('/createOffer/:id', passport.authenticate('bearer', {session:false}), function(req,res){
+router.post('/createOffer/:id',passport.authenticate('bearer', {session:false}), function(req,res){
             var offre = new Offre(req.body);
             offre.owner = ObjectId(req.params.id);
             offre.save(function(err,offre){
@@ -60,6 +74,7 @@ router.post('/publishOffer/:ido', passport.authenticate('bearer', {session:false
 router.post('/deleteOffer/:ido', passport.authenticate('bearer', {session:false}), function(req, res){
     Offre.findByIdAndUpdate(ObjectId(req.params.ido),{$set:{status:'Deleted'}}, function(err, offre){
         if (err){
+            console.log(true)
             res.send(err)
         }
         Offre.findById(ObjectId(req.params.ido)).exec(function(errr,offre){

@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  connectedUser:any;
+  constructor(private http : HttpClient) {
+    this.connectedUser = this.decodeToken();
+   }
 
-  constructor(private http : HttpClient) { }
   registerProfil (body){
+    
     return this.http.post('http://localhost:4000/User/registerProfil', body);
   }
  
@@ -17,5 +22,17 @@ export class AuthService {
 
   login(body){
     return this.http.post('http://localhost:4000/User/Login', body);
+  }
+  setToken(token){
+    localStorage.setItem('token', token);
+  }
+  decodeToken(){
+    let helper = new JwtHelperService();
+    let decode = localStorage.getItem('token');
+    if (decode){
+      let token = helper.decodeToken(decode);
+      return token.data
+    }
+    return null;
   }
 }

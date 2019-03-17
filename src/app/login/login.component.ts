@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FormGroup, Validators, FormArray, FormControl} from '@angular/forms';
+import { UserApiService } from '../user-api.service';
+import { FormGroup,FormGroupDirective, Validators,NgForm, FormArray, FormControl} from '@angular/forms';
+import { Control } from '../control';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,9 @@ import { FormGroup, Validators, FormArray, FormControl} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  exist;
   User : FormGroup;
-  constructor(private Auth : AuthService) { 
+  constructor(private Auth : AuthService, private uas : UserApiService) { 
     this.User = new FormGroup({      
       email:new FormControl('',[Validators.required, Validators.email]),
       password:new FormControl('',[Validators.required, Validators.minLength(8)]),    
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
   Login(form){
     this.Auth.login(form.value).subscribe(res => {
       if(res['success']){
-        console.log(res);
-        localStorage.setItem('jwt',res['access_token'])
+        this.Auth.setToken(res['access_token']);
+        this.Auth.connectedUser = this.Auth.decodeToken();
       }
       else{
         alert(res['message']);
@@ -32,4 +34,14 @@ export class LoginComponent implements OnInit {
 
     })
   }
+
+  existt (){
+    this.uas.GetUserEmail(this.User.value.email).subscribe(res => {
+      
+      this.exist = res;
+      if(this.exist === true){
+        this.User.controls.email.setErrors({valid : false})
+      }
+      
+    })}
 }

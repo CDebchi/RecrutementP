@@ -7,6 +7,23 @@ var Offres = require('../models/offreSchema');
 var auth = require('../auth/auth-jwt').authenticate;
 var jwt = require ('jsonwebtoken');
 var passport = require('passport');
+var multer  = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'upload/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+  });
+var upload = multer({
+    storage: storage
+  })
+
+
+  router.post('/upload',  upload.single('file'), async (req, res, next) => {
+    res.send(req.file)
+   });
 
 
 

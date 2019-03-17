@@ -7,8 +7,27 @@
       <div class="col-sm-6 col-sm-offset-3">
         <div class="box p-40">
           <form [formGroup]='User'>
-            <input type="text" class="form-item" placeholder="Email" name="email" formControlName="email">
-            <input type="password" class="form-item" placeholder="Password" name="password" formControlName="password">
+            <mat-form-field class="example-full-width">
+              <input required matInput type="text" (blur)="existt()" class="form-item" placeholder="Email" name="email" formControlName="email">
+              <mat-error *ngIf="User.get('email').hasError('email') && !User.get('email').hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="User.get('email').hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+                <mat-error *ngIf="!User.get('email').hasError('valid') && !User.get('email').hasError('required')&& !User.get('email').hasError('email')">
+                  Email dos not exist!!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input required matInput type="password" class="form-item" placeholder="Password" name="password" formControlName="password">
+              <mat-error *ngIf="User.get('password').hasError('minlength') && !User.get('password').hasError('required')">
+                  Min length 8
+                </mat-error>
+              <mat-error *ngIf="User.get('password').hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
             <button (click)="Login(User)" [disabled]="User.invalid" class="ht-btn bg-4f84c4">Login</button>
           </form>
         </div>

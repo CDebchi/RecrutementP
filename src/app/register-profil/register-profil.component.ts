@@ -21,9 +21,9 @@ export class RegisterProfilComponent implements OnInit {
         firstName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
         lastname:new FormControl('',[Validators.required, Validators.maxLength(20)]),
         email:new FormControl('',[Validators.required, Validators.email]),
-        password:new FormControl('',[Validators.required, Validators.maxLength(40), Validators.minLength(8)]),
+        password:new FormControl('',[Validators.required, Validators.minLength(8)]),
         gender:new FormControl(''),
-        passwordv: new FormControl('',[Validators.required, Validators.maxLength(40), Validators.minLength(8)])
+        passwordv: new FormControl('',[Validators.required, Validators.minLength(8)])
       
     });
    }
@@ -46,13 +46,20 @@ export class RegisterProfilComponent implements OnInit {
         alert('Email already exist!!');
       }
     })
-    
+}
 
+passwordExist(){
+  console.log('required:  ',this.User.get('passwordv').hasError('required'));
+  console.log('required11:  ',this.User.get('password').hasError('required'));
+  if (this.User.value.password !== this.User.value.passwordv){
+    this.User.controls.passwordv.setErrors({validd : false});
+    console.log(this.User.get('passwordv').hasError('validd'))    
+  }
 }
 
 existt (){
   this.uas.GetUserEmail(this.User.value.email).subscribe(res => {
-    console.log(res);
+    
     this.exist = res;
     if(this.exist === false){
       this.User.controls.email.setErrors({valid : false})
