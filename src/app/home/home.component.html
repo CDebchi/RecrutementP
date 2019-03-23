@@ -13,33 +13,33 @@
   </div>
 </section>
 
-<section class="block-2 p-t-30 p-b-30">
+<section *ngIf="!isConnected" class="block-2 p-t-30 p-b-30">
   <div class="container">
     <div class="bg-4f84c4 thumb-item text-left p-t-30 p-b-30 m-b-0 findjob">
       <div class="row">
         <div class="col-sm-7">
           <div>
-            <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you find good job</h4>
+            <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you to find a good job</h4>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="pull-right"><a href="#" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
+          <div class="pull-right"><a routerLink="/RegisterProfil" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="block-2 p-t-30 p-b-30">
+<section *ngIf="!isConnected" class="block-2 p-t-30 p-b-30">
     <div class="container">
       <div class="bg-4f84c4 thumb-item text-left p-t-30 p-b-30 m-b-0">
         <div class="row">
           <div class="col-sm-7">
             <div>
-              <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you find good employee</h4>
+              <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you to find a good employee</h4>
             </div>
           </div>
           <div class="col-sm-4">
-            <div class="pull-right"><a href="#" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
+            <div class="pull-right"><a routerLink="/RegisterCompany" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
           </div>
         </div>
       </div>
@@ -48,73 +48,32 @@
 <section class="job bg-f">
   <div class="container">
     <div class="title-group line-default">
-      <h2>browse Jobs</h2>
+      <h2>Latest Jobs</h2>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore</p>
     </div>
     <div class="row ">
-        <!-- <div class="col-md-5">
-          <div class="bg-f p-30 p-xs-10 m-b-30">
-            <div class="bg-4f84c4 thumb-item p-b-40 p-xs-25 m-b-0">
-              <h4 class="heading p-t-0 text-left">Find Jobs</h4>
-              <form>
-                <select class="form-item form-item-3x no-border">
-                  <option>Company (all)</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-                <select class="form-item form-item-3x no-border">
-                  <option>Industry (all)</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-                <select class="form-item form-item-3x no-border">
-                  <option>Type job</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                </select>
-                <select class="form-item form-item-3x no-border">
-                  <option>Salary</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
-                <input type="text" class="form-item form-item-3x no-border" placeholder="Keywords">
-                <div class="form-group m-b-0"><a href="#" class="ht-btn ht-btn-3x bg-1 w-full text-center m-t-5">Search</a></div>
-              </form>
-            </div>
-          </div>
-        </div> -->
-      <div class="col-sm-9"><!-- Blog-item -->
-        <div class="box-item"  *ngFor="let job of AllJobActive">
+
+      <div class="col-sm-10"><!-- Blog-item -->
+        <div class="box-item"  *ngFor="let job of tableActive">
           <div class="row">
             <div class="col-sm-2 text-center">
-              <a href="#" class="thumb-img"><img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image"></a>
+              <a href="javascript:void(0)" (click)="setjob(job?._id)" class="thumb-img"><img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image"></a>
             </div>
             <div class="col-sm-10">
               <h3 class="heading p-t-0">
-                <a href="#">{{job?.post}}</a>
+                <a href="javascript:void(0)" (click)="setjob(job?._id)" >{{job?.post}}</a>
                 <span>January 23 2015</span>
               </h3>
               <p>{{job?.owner.nameCompany}}<span class="color-a">| {{job?.owner.adress}}</span></p>
               <p class="selected">{{job?.job_description}}</p>
               <div class="p-t-5">
-                <button type="submit" class="btn btn-sm btn-default m-r-10" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="" title="">Share</button>
-                <div class="list-icon d-none">
                   <ul class="list-inline">
-                    <li><a href="#"><i class="fa fa-facebook icon icon-30 rad-5 bg-4f84c4"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google icon icon-30 rad-5 bg-f2552c"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter icon icon-30 rad-5 bg-95dee3"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram icon icon-30 rad-5 bg-fe718b"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook-f icon icon-30 rad-5 bg-4f84c4"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google icon icon-30 rad-5 bg-f2552c"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter icon icon-30 rad-5 bg-95dee3"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram icon icon-30 rad-5 bg-fe718b"></i></a></li>
                   </ul>
-                </div>
-                <a href="#" class="btn btn-sm btn-default m-r-10">Save</a>
-                <a href="#" class="btn btn-sm btn-info pull-right">Apply</a>
+                <a href="javascript:void(0)" (click)="setjob(job?._id)"  class="btn btn-sm btn-info pull-right">Apply</a>
               </div>
             </div>
           </div>

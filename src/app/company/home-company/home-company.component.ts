@@ -29,8 +29,9 @@ export class HomeCompanyComponent implements OnInit {
   }
   
   removeFakePathUrl(f) {     
-    return f.slice(12, f.length);
-    
+    if(f)   {
+      return f.slice(12, f.length); 
+    }
   }
   setJob(id){
     localStorage.setItem('job',id);

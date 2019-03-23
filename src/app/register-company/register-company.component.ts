@@ -5,6 +5,7 @@ import { UserApiService } from '../user-api.service';
 import { FormGroup,FormGroupDirective, Validators,NgForm, FormArray, FormControl} from '@angular/forms';
 import { Control } from '../control';
 import { CompanyApiService }  from '../company-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-company',
@@ -15,7 +16,7 @@ export class RegisterCompanyComponent implements OnInit {
   exist;
   Company : FormGroup;
   
-  constructor(private Auth : AuthService, private uas : UserApiService, private cap : CompanyApiService) {
+  constructor(private Auth : AuthService, private uas : UserApiService, private cap : CompanyApiService, private route : Router) {
     this.Company = new FormGroup({
       nameCompany : new FormControl('',[Validators.required]),
       adress : new FormControl('',[Validators.required]),
@@ -43,6 +44,7 @@ export class RegisterCompanyComponent implements OnInit {
      
           this.Auth.registerCompany(form.value).subscribe(res => {
             alert('Welcome :)');
+            this.route.navigateByUrl('/Login');
           });     
       }
       else{

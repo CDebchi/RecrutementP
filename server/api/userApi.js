@@ -88,6 +88,21 @@ router.post('/Login', function(req,res){
     })
 });
 
+router.post('/ReloadToken/:email', function (req,res){
+    console.log(req.params.email);
+    User.findOne({email:req.params.email}).exec(function (err, user){
+        if (err){
+            res.send(err)
+        }
+        if(bcrypt.compareSync(req.body.password, user.password)){
+            var token = jwt.sign({data:user}, 's3cr3t', {expiresIn:3600});
+            res.send({success:"true", access_token:token});
+        }
+        else{
+            res.send({message :'wrong password!!'});
+        }
+    })
+})
 router.get('/Getbyemail/:email', function(req,res){
     User.findOne({email:req.params.email}, function(err, user){
         if(err){

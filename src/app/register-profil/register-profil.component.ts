@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { UserApiService } from '../user-api.service';
 import { FormGroup,FormGroupDirective, Validators,NgForm, FormArray, FormControl} from '@angular/forms';
 import { Control } from '../control';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ export class RegisterProfilComponent implements OnInit {
   exist;
   User : FormGroup;
  
-  constructor(private Auth : AuthService, private uas : UserApiService) {
+  constructor(private Auth : AuthService, private uas : UserApiService, private route : Router) {
     this.User = new FormGroup({      
         firstName: new FormControl('',[Validators.required, Validators.maxLength(20)]),
         lastname:new FormControl('',[Validators.required, Validators.maxLength(20)]),
@@ -38,7 +39,8 @@ export class RegisterProfilComponent implements OnInit {
         if(form.value.password == form.value.passwordv){
      
           this.Auth.registerProfil(form.value).subscribe(res => {
-            alert('Welcome :)')
+            alert('Welcome :)');
+            this.route.navigateByUrl('/Login');
           });     
       }
       }

@@ -30,3 +30,7 @@
 h5{
   font-size: 15px;
 }
+.modal-body{
+  max-height: 500px;
+  overflow: auto;
+}

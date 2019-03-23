@@ -9,7 +9,12 @@ import { HomeCompanyComponent } from './company/home-company/home-company.compon
 import { PostJobComponent } from './company/post-job/post-job.component';
 import { ListJobsComponent } from './company/list-jobs/list-jobs.component';
 import { JobDetailComponent } from './company/job-detail/job-detail.component';
+import { DetailJobComponent} from './detail-job/detail-job.component';
+import { CandidateComponent } from './candidate/candidate.component';
 import { from } from 'rxjs';
+import { OffersComponent } from './candidate/offers/offers.component';
+import { AuthGuard } from './auth.guard';
+import { ReloadTokenComponent } from './reload-token/reload-token.component';
 
 const routes: Routes = [
   {
@@ -19,7 +24,7 @@ const routes: Routes = [
   },
   {
     path:'home',
-    component:HomeComponent,
+    component:HomeComponent, 
     data: {title : 'Home'}
   },
   {
@@ -38,8 +43,19 @@ const routes: Routes = [
     data:{title:'Login'}
   },
   {
+    path:'JobDetail',
+    component : DetailJobComponent,
+    data : {title : 'Job Detail'}
+  },
+  {
+    path : 'Reload',
+    component : ReloadTokenComponent,
+    data : {title : 'Reload'}
+  },
+  {
     path : 'Company',
     component : CompanyComponent,
+    canActivate : [AuthGuard],
     children : [
       {
         path : 'CompanyHome',
@@ -60,6 +76,18 @@ const routes: Routes = [
         path : 'JobDetail',
         component : JobDetailComponent,
         data : {title : 'Job Detail'}
+      }
+    ]
+  },
+  {
+    path : 'Profil',
+    component : CandidateComponent,
+    canActivate : [AuthGuard],
+    children : [
+      {
+        path : 'AllJobs',
+        component : OffersComponent,
+        data : { title : 'AllJobs'}
       }
     ]
   }

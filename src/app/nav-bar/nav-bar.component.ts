@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { CompanyApiService } from '../company-api.service';
+import { ProfilApiService } from '../profil-api.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,12 +15,23 @@ export class NavBarComponent implements OnInit {
   connected;
   company;
   profil;
-  constructor(private auth : AuthService) {
+  constructor(private auth : AuthService, private cas : CompanyApiService, private pas : ProfilApiService) {
       
       if (localStorage.getItem('token')){
         this.connected = true
-        this.user = this.auth.connectedUser;
-        
+        this.user = this.auth.connectedUser;  
+        if(this.user.company){
+          this.cas.GetCompanyId(this.user.company).subscribe(res => {
+             
+             this.company = res;
+          })
+        }
+        if (this.user.profile){
+          this.pas.GetProfilById(this.user.profile).subscribe(res => {
+            this.profil = res;
+            console.log(res);
+          })
+        }
       }
       else{
         this.connected = false;

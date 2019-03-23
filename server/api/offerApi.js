@@ -10,17 +10,14 @@ var jwt = require ('jsonwebtoken');
 var passport = require('passport');
 
 
-router.get('/GetOffreById/:id', function(req, res){
-    Offre.findById(ObjectId(req.params.id)).exec(function (err, offre){
-        if (err){
-            res.send (err);
-        }
-        res.send(offre);
-    });
+router.get('/GetOffreById/:id', async (req, res)=> {
+    const rslt =await Offre.findById(ObjectId(req.params.id)).populate('owner');
+    res.send(rslt);
 });
 
+
 router.post('/UpdateOffre/:id',passport.authenticate('bearer', { session: false }), function (req, res){
-    Offre.findByIdAndUpdate(ObjectId(req.params.id), {$set:req.body}, function(err, offre){
+    Offre.findByIdAndUpdate(ObjectId(req.params.id),{$set:req.body}, function(err, offre){
         if (err){
             res.send(err);
         }
@@ -34,6 +31,15 @@ router.get('/GetAllOffr', function(req,res){
             res.send(err)
         }
         res.send(offres)
+    })
+});
+
+router.post('/ApplyOffre/:idp/:ido',  function(req, res){
+    Offre.findByIdAndUpdate(ObjectId(req.params.ido), {$push:{applied_profiles:ObjectId(req.params.idp)}}, function(err, offre){
+        if (err){
+            res.send(err);
+        }
+        res.send(offre);
     })
 })
 

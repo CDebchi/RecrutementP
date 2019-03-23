@@ -8,7 +8,7 @@ var offreSchema = new mongoose.Schema({
     status : {type:String, enum:['Active','Deleted','Draft'],default:'Draft'},
     skills:[{skill:String}],
     owner : {type:mongoose.Schema.Types.ObjectId, ref:'Company'},
-    applied_profiles : [{type:mongoose.Schema.Types.ObjectId,ref:'Profil'}]
+    applied_profiles : [{type:mongoose.Schema.Types.ObjectId,ref:'Profil', unique:true}]
 });
 
 module.exports = mongoose.model('Offre', offreSchema);

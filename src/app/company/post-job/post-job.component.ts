@@ -43,7 +43,6 @@ export class PostJobComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.company_id);
   }
 
   PostOffre(id, body){

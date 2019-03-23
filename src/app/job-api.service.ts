@@ -20,4 +20,9 @@ export class JobApiService {
   GetAllJobs(){
     return this.http.get('http://localhost:4000/Offre/GetAllOffr');
   }
+
+  ApplyOffre(idj,idp,body){
+    let header = new HttpHeaders().append('Authorization','Bearer ' + localStorage.getItem('token'));
+    return this.http.post(`http://localhost:4000/Offre/ApplyOffre/${idp}/${idj}`, body,{headers:header});
+  }
 }

@@ -31,6 +31,12 @@
 							<li class="dropdown" *ngIf="!connected">
 								<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>		
 							</li>
+							<li class="dropdown" *ngIf="user?.profile">
+								<a routerLink="" class="dropdown-toggle" role="button">My Profile</a>
+							</li>
+							<li class="dropdown" *ngIf="user?.profile">
+								<a class="dropdown-toggle" routerLink="" role="button">My jobs List</a>
+							</li>
 
 						</ul>
 					</div>
@@ -48,9 +54,16 @@
 								<div class="col-sm-12 col-md-6">
 									<ul class="top-link pull-right">										
 										<li class="dropdown user" *ngIf="connected && user.company">
-											<a href="#l.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My account</a>
+											<a href="#l.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{company?.nameCompany}}</a>
 											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-												<li><a href="#">Dashboard</a></li>
+												<li><a routerLink="/Company/CompanyHome">Dashboard</a></li>
+												<li><a routerLink="" (click)="logout()">Log out</a></li>
+											</ul>
+										</li>
+										<li class="dropdown user" *ngIf="connected && user.profile">
+											<a href="#l.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{profil?.firstName}}</a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+												<li><a routerLink="">Dashboard</a></li>
 												<li><a routerLink="" (click)="logout()">Log out</a></li>
 											</ul>
 										</li>
@@ -92,6 +105,12 @@
 												</li>
 											<li class="dropdown" *ngIf="!connected">
 												<a routerLink="/RegisterProfil" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
+											</li>
+											<li class="dropdown" *ngIf="user?.profile">
+												<a routerLink="" class="dropdown-toggle" role="button">My Profile</a>
+											</li>
+											<li class="dropdown" *ngIf="user?.profile">
+												<a routerLink="" class="dropdown-toggle" role="button">My offers List</a>
 											</li>
 											<li class="dropdown" *ngIf="!connected">
 												<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">login</a>

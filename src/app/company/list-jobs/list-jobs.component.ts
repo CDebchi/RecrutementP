@@ -31,8 +31,9 @@ export class ListJobsComponent implements OnInit {
   }
 
   removeFakePathUrl(f) {     
-    return f.slice(12, f.length);
-    
+    if(f)   {
+      return f.slice(12, f.length); 
+    }    
   }
   ConfirmJob(id, body){
     this.cas.PublishOffre(id, body).subscribe(res => {

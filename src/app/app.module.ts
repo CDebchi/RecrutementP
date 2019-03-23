@@ -19,6 +19,10 @@ import { UpdateCompanyComponent } from './company/update-company/update-company.
 import { PostJobComponent } from './company/post-job/post-job.component';
 import { ListJobsComponent } from './company/list-jobs/list-jobs.component';
 import { JobDetailComponent } from './company/job-detail/job-detail.component';
+import { DetailJobComponent } from './detail-job/detail-job.component';
+import { CandidateComponent } from './candidate/candidate.component';
+import { OffersComponent } from './candidate/offers/offers.component';
+import { ReloadTokenComponent } from './reload-token/reload-token.component';
 
 
 @NgModule({
@@ -35,6 +39,10 @@ import { JobDetailComponent } from './company/job-detail/job-detail.component';
     PostJobComponent,
     ListJobsComponent,
     JobDetailComponent,
+    DetailJobComponent,
+    CandidateComponent,
+    OffersComponent,
+    ReloadTokenComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +53,7 @@ import { JobDetailComponent } from './company/job-detail/job-detail.component';
     Control,
     JwtModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

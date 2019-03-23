@@ -23,6 +23,10 @@ export class AuthService {
   login(body){
     return this.http.post('http://localhost:4000/User/Login', body);
   }
+
+  ReloadToken(email, body){
+    return this.http.post(`http://localhost:4000/User/ReloadToken/${email}`,body)
+  }
   setToken(token){
     localStorage.setItem('token', token);
   }
@@ -34,5 +38,11 @@ export class AuthService {
       return token.data
     }
     return null;
+  }
+  verifToken()
+  {
+    let decode = localStorage.getItem('token');
+    let helper = new JwtHelperService();
+    return helper.isTokenExpired(decode);
   }
 }
