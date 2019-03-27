@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-candidate',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateComponent implements OnInit {
 
-  constructor() { }
+  Isconnected;
+  constructor(private auth : AuthService) { }
 
   ngOnInit() {
+    // if ()
   }
 
 }

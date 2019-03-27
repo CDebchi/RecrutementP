@@ -25,4 +25,4 @@ $Recrutement-theme: mat-light-theme($Recrutement-primary, $Recrutement-accent, $
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($Recrutement-theme);
-
+@import '~@ngx-share/button/themes/default/default-theme';

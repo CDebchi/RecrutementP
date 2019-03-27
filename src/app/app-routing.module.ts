@@ -56,6 +56,7 @@ const routes: Routes = [
     path : 'Company',
     component : CompanyComponent,
     canActivate : [AuthGuard],
+    data : {role:'company'},
     children : [
       {
         path : 'CompanyHome',
@@ -73,7 +74,7 @@ const routes: Routes = [
         data : {title : 'List Of Jobs'},
       },
       {
-        path : 'JobDetail',
+        path : 'JobDetail/:id',
         component : JobDetailComponent,
         data : {title : 'Job Detail'}
       }
@@ -83,6 +84,7 @@ const routes: Routes = [
     path : 'Profil',
     component : CandidateComponent,
     canActivate : [AuthGuard],
+    data : {role:'profil'},
     children : [
       {
         path : 'AllJobs',

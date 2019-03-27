@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyApiService } from '../../company-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class HomeCompanyComponent implements OnInit {
   token;  
   jobNbr;
   ListJob;
-  constructor(private router : Router, private cas : CompanyApiService, private auth : AuthService) {
+  constructor(private dataRoute: ActivatedRoute,private router : Router, private cas : CompanyApiService, private auth : AuthService) {
     
     this.token = this.auth.connectedUser;
    }
@@ -34,7 +34,8 @@ export class HomeCompanyComponent implements OnInit {
     }
   }
   setJob(id){
-    localStorage.setItem('job',id);
-    this.router.navigateByUrl('Company/JobDetail');
+    // localStorage.setItem('job',id);
+    // this.router.navigateByUrl('Company/JobDetail');
+    this.router.navigate(['/Company/JobDetail', id]);
   }
 }

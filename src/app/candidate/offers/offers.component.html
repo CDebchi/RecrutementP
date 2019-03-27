@@ -1,0 +1,71 @@
+
+<section class="job bg-f">
+    <div class="container  mat-elevation-z8">
+      <div class="title-group line-default">
+        <h2>Jobs</h2>
+        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore</p> -->
+      </div>
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field><br/>
+        <div >
+          <input type="checkbox"  id="customCheck" (change)="applyFilter($event.target.value)" value="part-time">
+          <label  for="customCheck">Part time</label>
+          <input type="checkbox"  id="customCheck1" (change)="applyFilter($event.target.value)" value="full-time">
+          <label  for="customCheck1">Full time</label>
+        </div>
+        <div>
+          <input type="checkbox"  id="customCheck" (change)="applyFilter($event.target.value)" value="CDD">
+          <label  for="customCheck">CDD</label>
+          <input type="checkbox"  id="customCheck" (change)="applyFilter($event.target.value)" value="CDI">
+          <label  for="customCheck">CDI</label>
+          <input type="checkbox"  id="customCheck" (change)="applyFilter($event.target.value)" value="SIVP">
+          <label  for="customCheck">SIVP</label>
+          <input type="checkbox"  id="customCheck" (change)="applyFilter($event.target.value)" value="Freelance">
+          <label  for="customCheck">Freelance</label>
+      
+        </div>
+        <div>
+        </div>
+            <!-- <label>Part-Time</label>
+            <input type="checkbox" (change)="applyFilter($event.target.value)" value="part-time" name="Part-Time">
+              
+            <label>Full-Time</label>
+            <input type="checkbox" (change)="applyFilter($event.target.value)" value="full-time" name="Part-Time">
+             -->
+        
+      </div>
+
+      <div class="row justify-content-md-center">
+  
+        <div class="col-sm-12"><!-- Blog-item -->
+          <div class="box-item"  *ngFor="let job of (dataSource?.filteredData | jobFilter)">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2 text-center">
+                <a href="javascript:void(0)" (click)="setjob(job?._id)" class="thumb-img"><img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image"></a>
+              </div>
+              <div class="col-sm-10">
+                <h3 class="heading p-t-0">
+                  <a class="kais" href="javascript:void(0)" (click)="setjob(job?._id)" >{{job?.post}}</a>
+                  <span>{{job?.applied_profiles.length}}: Apply</span>
+                </h3>
+                <p>{{job?.owner.nameCompany}}<span class="color-a">| {{job?.owner.adress}}</span></p>
+                <p class="selected">{{job?.job_description}}</p>
+                <div class="p-t-5">
+                    <ul class="list-inline">
+                      <li><a target="_blank" title="Facebook share" href="http://www.facebook.com/sharer.php?u=www.google.com"><i class="fab fa-facebook-f icon icon-30 rad-5 bg-4f84c4"></i></a></li>
+                      <li><a href="#"><i class="fab fa-google icon icon-30 rad-5 bg-f2552c"></i></a></li>
+                      <li><a href="#"><i class="fab fa-twitter icon icon-30 rad-5 bg-95dee3"></i></a></li>
+                      <li><a href="#"><i class="fab fa-instagram icon icon-30 rad-5 bg-fe718b"></i></a></li>
+                    </ul>
+                  <a href="javascript:void(0)" (click)="setjob(job?._id)"  class="btn btn-sm btn-info pull-right">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>

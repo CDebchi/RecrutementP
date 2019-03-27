@@ -23,6 +23,8 @@ import { DetailJobComponent } from './detail-job/detail-job.component';
 import { CandidateComponent } from './candidate/candidate.component';
 import { OffersComponent } from './candidate/offers/offers.component';
 import { ReloadTokenComponent } from './reload-token/reload-token.component';
+import { JobFilterPipe } from './job-filter.pipe';
+
 
 
 @NgModule({
@@ -43,6 +45,7 @@ import { ReloadTokenComponent } from './reload-token/reload-token.component';
     CandidateComponent,
     OffersComponent,
     ReloadTokenComponent,
+    JobFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { ReloadTokenComponent } from './reload-token/reload-token.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     Control,
-    JwtModule
+    JwtModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

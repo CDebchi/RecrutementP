@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyApiService } from '../../company-api.service';
 import { FormGroup,FormGroupDirective, Validators,NgForm, FormArray, FormControl} from '@angular/forms';
 import { Control } from '../../control';
+import { Router, ActivatedRoute } from '@angular/router';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import { AuthService } from '../../auth.service';
@@ -28,7 +29,8 @@ export class JobDetailComponent implements OnInit {
   
   company_id;
 
-  constructor(private cas : CompanyApiService, private auth : AuthService, private jas : JobApiService) {
+  constructor(private dataRoute: ActivatedRoute, private router : Router, private cas : CompanyApiService, private auth : AuthService, private jas : JobApiService) {
+    const key: String = this.dataRoute.snapshot.params['id'];
     this.token = this.auth.connectedUser;
     this.job = new FormGroup({
       post : new FormControl('',[Validators.required]),
@@ -38,7 +40,7 @@ export class JobDetailComponent implements OnInit {
       skills : new FormArray([])
     });
     this.company_id = this.token.company;
-    this.jas.GetJobById(localStorage.getItem('job')).subscribe(res => {
+    this.jas.GetJobById(key).subscribe(res => {
       this.LocalJob = res;
     })
    }

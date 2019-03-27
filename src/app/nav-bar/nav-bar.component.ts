@@ -29,7 +29,6 @@ export class NavBarComponent implements OnInit {
         if (this.user.profile){
           this.pas.GetProfilById(this.user.profile).subscribe(res => {
             this.profil = res;
-            console.log(res);
           })
         }
       }

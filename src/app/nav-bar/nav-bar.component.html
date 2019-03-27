@@ -7,14 +7,14 @@
 							<span></span>
 						</div>
 						<ul class="menu-mb">
-							<li class="dropdown"><a routerLink="home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a></li>
+							<li class="dropdown"><a routerLink="home"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a></li>
 							
+							<li *ngIf="user.company">
+									<a routerLink="/Company/CompanyHome"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
+							</li>
 							<li class="dropdown" *ngIf="user.company">
-									<a routerLink="/Company/CompanyHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
-								</li>
-								<li class="dropdown" *ngIf="user.company">
 									<a routerLink="Company/PostJob"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
-								</li>
+							</li>
 								<li class="dropdown" *ngIf="user.company">
 									<a routerLink="Company/ManageJob" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
 								</li>
@@ -31,10 +31,10 @@
 							<li class="dropdown" *ngIf="!connected">
 								<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>		
 							</li>
-							<li class="dropdown" *ngIf="user?.profile">
-								<a routerLink="" class="dropdown-toggle" role="button">My Profile</a>
+							<li  *ngIf="user?.profile">
+								<a routerLink=""  role="button">My Profile</a>
 							</li>
-							<li class="dropdown" *ngIf="user?.profile">
+							<li  *ngIf="user?.profile">
 								<a class="dropdown-toggle" routerLink="" role="button">My jobs List</a>
 							</li>
 
@@ -89,7 +89,7 @@
 									<nav id="holder_mn" class="menu-nav">
 										<ul>
 											<li class="dropdown">
-												<a routerLink="/home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a>
+												<a routerLink="/home"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a>
 											</li>
 											<li class="dropdown" *ngIf="user.company">
 												<a routerLink="/Company/CompanyHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
@@ -104,13 +104,13 @@
 													<a routerLink="/RegisterCompany" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
 												</li>
 											<li class="dropdown" *ngIf="!connected">
-												<a routerLink="/RegisterProfil" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
+												<a routerLink="/RegisterProfil"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
 											</li>
-											<li class="dropdown" *ngIf="user?.profile">
-												<a routerLink="" class="dropdown-toggle" role="button">My Profile</a>
+											<li  *ngIf="user?.profile">
+												<a routerLink=""  role="button">My Profile</a>
 											</li>
-											<li class="dropdown" *ngIf="user?.profile">
-												<a routerLink="" class="dropdown-toggle" role="button">My offers List</a>
+											<li  *ngIf="user?.profile">
+												<a routerLink=""  role="button">My offers List</a>
 											</li>
 											<li class="dropdown" *ngIf="!connected">
 												<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">login</a>

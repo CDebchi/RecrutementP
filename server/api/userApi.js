@@ -14,10 +14,12 @@ router.post('/registerProfil', function(req,res){
     var profil = new Profil();
     profil.firstName = req.body.firstName;
     profil.lastName = req.body.lastname;
+    console.log(profil)
     var user = new User();
     user.email = req.body.email;
     user.password=bcrypt.hashSync(req.body.password);
     user.profile = profil._id;
+    user.role = 'profil';
     user.gender = req.body.gender;
     user.save(function(err,user){
         if (err){
@@ -29,7 +31,7 @@ router.post('/registerProfil', function(req,res){
                     res.send(errr);
                 }
                 else{
-                    res.send(user);
+                    res.send(profil);
                 }
             });
         }
@@ -50,6 +52,7 @@ router.post('/registerCompany', function(req,res){
     company.linkedIn = req.body.linkedIn;
     var user = new User();
     user.email = req.body.email;
+    user.role = 'company';
     user.password=bcrypt.hashSync(req.body.password);
     user.company = company._id;
     user.save(function(err,user){
