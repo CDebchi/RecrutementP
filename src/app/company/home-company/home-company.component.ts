@@ -21,6 +21,7 @@ export class HomeCompanyComponent implements OnInit {
   ngOnInit() {   
     this.cas.GetCompanyId(this.token.company).subscribe(res => {
       this.company = res;
+      console.log(res);
 
       this.cas.GetJobByCompany(this.token.company).subscribe(res => {
         this.ListJob = res;
@@ -34,8 +35,6 @@ export class HomeCompanyComponent implements OnInit {
     }
   }
   setJob(id){
-    // localStorage.setItem('job',id);
-    // this.router.navigateByUrl('Company/JobDetail');
     this.router.navigate(['/Company/JobDetail', id]);
   }
 }

@@ -17,7 +17,8 @@ export class DetailJobComponent implements OnInit {
   company;
   profile;
   applyed;
-  constructor(private url: ActivatedRoute,private jas : JobApiService, private route : Router, private Auth : AuthService, private pas : ProfilApiService) {
+  constructor(private dataRoute: ActivatedRoute,private url: ActivatedRoute,private jas : JobApiService, private route : Router, private Auth : AuthService, private pas : ProfilApiService) {
+    const key: String = this.dataRoute.snapshot.params['id'];
     if (localStorage.getItem('token')){
       this.user = this.Auth.connectedUser;
     }
@@ -26,7 +27,7 @@ export class DetailJobComponent implements OnInit {
         this.profile = res;
       })
     }  
-    this.jas.GetJobById(localStorage.getItem('job')).subscribe(res => {
+    this.jas.GetJobById(key).subscribe(res => {
       this.job = res;
       res['applied_profiles'].forEach(element => {
         if(element == this.user['profile']){

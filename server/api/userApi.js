@@ -11,10 +11,9 @@ var jwt = require ('jsonwebtoken');
 var passport = require('passport');
 
 router.post('/registerProfil', function(req,res){
-    var profil = new Profil();
+    profil = new Profil();
     profil.firstName = req.body.firstName;
     profil.lastName = req.body.lastname;
-    console.log(profil)
     var user = new User();
     user.email = req.body.email;
     user.password=bcrypt.hashSync(req.body.password);

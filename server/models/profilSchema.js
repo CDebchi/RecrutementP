@@ -6,8 +6,8 @@ require('mongoose-type-email');
 var profilSchema = new mongoose.Schema({
     firstName : String,
     lastName : String,
-    emailContact : {type : mongoose.SchemaTypes.Email, unique:true},
-    phone : {type: String, unique:true},
+    emailContact : {type : mongoose.SchemaTypes.Email},
+    phone : {type: String},
     birthDate : String,
     address : String, 
     pictureProfile : String,

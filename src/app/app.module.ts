@@ -24,6 +24,7 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { OffersComponent } from './candidate/offers/offers.component';
 import { ReloadTokenComponent } from './reload-token/reload-token.component';
 import { JobFilterPipe } from './job-filter.pipe';
+import { ShareModule } from '@ngx-share/core';
 
 
 
@@ -55,6 +56,7 @@ import { JobFilterPipe } from './job-filter.pipe';
     BrowserAnimationsModule,
     Control,
     JwtModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

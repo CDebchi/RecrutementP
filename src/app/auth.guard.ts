@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private auth:AuthService,private route : Router){}
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(this.auth.decodeToken())
+    
     if(this.auth.decodeToken() !== null){
       if(this.auth.verifToken() === false){
        if(next.data.role && next.data.role == this.auth.decodeToken().role){

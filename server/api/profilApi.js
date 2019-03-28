@@ -36,7 +36,6 @@ router.post('/UpdateProfil/:id',passport.authenticate('bearer', { session: false
         res.send(profil);
     })
 });
-
 router.get('/getProfil/:id', passport.authenticate('bearer', {session:false}), function(req, res){
     Profil.findById(ObjectId(req.params.id)).exec(function(err, profil){
         if (err){

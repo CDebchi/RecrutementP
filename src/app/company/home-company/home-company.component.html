@@ -35,13 +35,13 @@
                 <li><strong>Company Size</strong><span>{{company?.size}}</span></li>
                 <li *ngIf="company?.phone != ''"><strong>Phone</strong>{{company?.phone}}</li>
                 <li><strong>Adress</strong>{{company?.adress}}, {{company?.otherAdress}}</li>
-                <li *ngIf="company?.webSite != ''"><strong>Website</strong><span class="w-150">{{company?.webSite}}</span></li>
+                <li *ngIf="company?.webSite"><strong>Website</strong><span class="w-150">{{company?.webSite}}</span></li>
               </ul>
               <ul class="list-inline m-t-15 m-b-20">
-                <li><a href="#"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></a></li>
-                <li><a href="#"><i class="fab fa-google icon icon-40 rad-3 bg-f2552c"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram icon icon-40 rad-3 bg-fe718b"></i></a></li>
+                <li *ngIf="company?.facebook"><a target="_blank" title="Facebook Link" href="{{company?.facebook}}"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></a></li>
+                <li *ngIf="company?.google"><a href="{{company?.google}}"><i class="fab fa-google icon icon-40 rad-3 bg-f2552c"></i></a></li>
+                <li *ngIf="company?.twitter"><a href="{{company?.twitter}}"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></a></li>
+                <li *ngIf="company?.instagram"><a href="{{company?.instagram}}"><i class="fab fa-instagram icon icon-40 rad-3 bg-fe718b"></i></a></li>
               </ul>
             </div>
             <div>

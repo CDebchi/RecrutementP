@@ -7,35 +7,35 @@
 							<span></span>
 						</div>
 						<ul class="menu-mb">
-							<li class="dropdown"><a routerLink="home"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a></li>
+							<li><a routerLink="home"   role="button" aria-haspopup="true" aria-expanded="false">home</a></li>
 							
 							<li *ngIf="user.company">
-									<a routerLink="/Company/CompanyHome"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
+									<a routerLink="/Company/CompanyHome"   role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
 							</li>
-							<li class="dropdown" *ngIf="user.company">
-									<a routerLink="Company/PostJob"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
+							<li *ngIf="user.company">
+									<a routerLink="Company/PostJob" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
 							</li>
-								<li class="dropdown" *ngIf="user.company">
-									<a routerLink="Company/ManageJob" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
+								<li *ngIf="user.company">
+									<a routerLink="Company/ManageJob"  role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
 								</li>
-								<li class="dropdown" *ngIf="user.company">
-									<a routerLink="/home" (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log Out</a>
+								<li *ngIf="user.company">
+									<a routerLink="/home" (click)="logout()"   role="button" aria-haspopup="true" aria-expanded="false">Log Out</a>
 								</li>
-							<li class="dropdown" *ngIf="!connected">
-								<a routerLink="/RegisterCompany" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
+							<li *ngIf="!connected">
+								<a routerLink="/RegisterCompany"  role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
 							
 							</li>
-							<li class="dropdown" *ngIf="!connected">
-								<a routerLink="/RegisterProfil" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Profil </a>
+							<li *ngIf="!connected">
+								<a routerLink="/RegisterProfil"   role="button" aria-haspopup="true" aria-expanded="false">Register Profil </a>
 							</li>
-							<li class="dropdown" *ngIf="!connected">
-								<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>		
+							<li  *ngIf="!connected">
+								<a routerLink="/Login"  role="button" aria-haspopup="true" aria-expanded="false">Login</a>		
 							</li>
 							<li  *ngIf="user?.profile">
 								<a routerLink=""  role="button">My Profile</a>
 							</li>
 							<li  *ngIf="user?.profile">
-								<a class="dropdown-toggle" routerLink="" role="button">My jobs List</a>
+								<a  routerLink="" role="button">My jobs List</a>
 							</li>
 
 						</ul>
@@ -88,23 +88,23 @@
 								<div class="col-sm-7 hidden-xs hidden-sm pull-right text-right">
 									<nav id="holder_mn" class="menu-nav">
 										<ul>
-											<li class="dropdown">
-												<a routerLink="/home"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">home</a>
+											<li >
+												<a routerLink="/home"  role="button" aria-haspopup="true" aria-expanded="false">home</a>
 											</li>
-											<li class="dropdown" *ngIf="user.company">
-												<a routerLink="/Company/CompanyHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
+											<li  *ngIf="user.company">
+												<a routerLink="/Company/CompanyHome"   role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
 											</li>
-											<li class="dropdown" *ngIf="user.company">
-												<a routerLink="Company/PostJob"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
+											<li *ngIf="user.company">
+												<a routerLink="Company/PostJob" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
 											</li>
-											<li class="dropdown" *ngIf="user.company">
-												<a routerLink="Company/ManageJob" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
+											<li  *ngIf="user.company">
+												<a routerLink="Company/ManageJob"  role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
 											</li>
-											<li class="dropdown" *ngIf="!connected">
-													<a routerLink="/RegisterCompany" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
+											<li *ngIf="!connected">
+													<a routerLink="/RegisterCompany" role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
 												</li>
-											<li class="dropdown" *ngIf="!connected">
-												<a routerLink="/RegisterProfil"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
+											<li *ngIf="!connected">
+												<a routerLink="/RegisterProfil"   role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
 											</li>
 											<li  *ngIf="user?.profile">
 												<a routerLink=""  role="button">My Profile</a>
@@ -113,7 +113,7 @@
 												<a routerLink=""  role="button">My offers List</a>
 											</li>
 											<li class="dropdown" *ngIf="!connected">
-												<a routerLink="/Login" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">login</a>
+												<a routerLink="/Login"  role="button" aria-haspopup="true" aria-expanded="false">login</a>
 											</li>
 										</ul>
 									</nav>

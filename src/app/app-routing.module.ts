@@ -43,7 +43,7 @@ const routes: Routes = [
     data:{title:'Login'}
   },
   {
-    path:'JobDetail',
+    path:'JobDetail/:id',
     component : DetailJobComponent,
     data : {title : 'Job Detail'}
   },
