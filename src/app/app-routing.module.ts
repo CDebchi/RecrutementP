@@ -15,6 +15,7 @@ import { from } from 'rxjs';
 import { OffersComponent } from './candidate/offers/offers.component';
 import { AuthGuard } from './auth.guard';
 import { ReloadTokenComponent } from './reload-token/reload-token.component';
+import { UpdateCompanyComponent } from './company/update-company/update-company.component';
 
 const routes: Routes = [
   {
@@ -77,8 +78,18 @@ const routes: Routes = [
         path : 'JobDetail/:id',
         component : JobDetailComponent,
         data : {title : 'Job Detail'}
+      },
+      {
+        path: 'UpdateCompany',
+        component : UpdateCompanyComponent,
+        data : {title : 'Update Company'}
       }
     ]
+  },
+  {
+    path : 'AllJobs',
+    component : OffersComponent,
+    data : { title : 'AllJobs'}
   },
   {
     path : 'Profil',
@@ -86,11 +97,7 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     data : {role:'profil'},
     children : [
-      {
-        path : 'AllJobs',
-        component : OffersComponent,
-        data : { title : 'AllJobs'}
-      }
+      
     ]
   }
 

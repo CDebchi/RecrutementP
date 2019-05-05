@@ -29,3 +29,13 @@
 .pad-box{
     padding: 20px;
 }
+.btn{
+    margin-top: 20px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+}
+.bg-0e76a8{
+    background: #0077B5;
+    color: white;
+}

@@ -16,3 +16,21 @@
 .TitleSpan:hover{
     text-decoration: underline;
 }
+.update-button{
+    float : right;
+}
+.fade:not(.show) {
+    opacity: 1;
+}
+#exampleModal{
+    padding-top: 200px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.example-full-width {
+  width: 100%;
+}

@@ -8,6 +8,20 @@ var Offre = require('../models/offreSchema');
 var auth = require('../auth/auth-jwt').authenticate;
 var jwt = require ('jsonwebtoken');
 var passport = require('passport');
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'debchi.chiheb@gmail.com',
+      pass: 'Alaviealamort@21'
+    }
+  });
+  var mailOptions = {
+    from: 'debchi.chiheb@gmail.com',
+    to: 'hamzaouni@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: 'https://www.google.com/settings/security/lesssecureapps'
+  };
 var multer  = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -27,7 +41,15 @@ var upload = multer({
    });
 
 
-
+router.post('/sendEmail', function (req,res){
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          res.send(error);
+        } else {
+          res.send('Email sent: ' + info.response);
+        }
+      });
+})
 router.get('/getCompany/:id',passport.authenticate('bearer', {session:false}), function(req,res){
     Company.findById(ObjectId(req.params.id)).exec(function(err,company){
         if (err){
@@ -70,6 +92,7 @@ router.post('/publishOffer/:ido', passport.authenticate('bearer', {session:false
         });
     });
 });
+
 
 router.post('/deleteOffer/:ido', passport.authenticate('bearer', {session:false}), function(req, res){
     Offre.findByIdAndUpdate(ObjectId(req.params.ido),{$set:{status:'Deleted'}}, function(err, offre){

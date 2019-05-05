@@ -37,15 +37,14 @@
               <li><strong>Job description: </strong>{{job?.job_description}}</li>
             </ul>
             <button *ngIf="connected() && !applyed" (click)="ApplyJob(profile?._id,job?._id,job )"  class="btn btn-sm btn-info pull-right">Apply</button>
-            <button *ngIf="!connected()" class="btn btn-sm btn-info pull-right">U must be Login To apply</button>
+            <button *ngIf="!connected()" routerLink="/Login" class="btn btn-sm btn-info pull-right">Login To apply</button>
             <span *ngIf="applyed" class="btn btn-sm btn-info pull-right">U have already apply in this job</span>
 
-            <!-- <ul class="list-inline m-t-15 m-b-20">
-              <li><a href="#"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></a></li>
-              <li><a href="#"><i class="fab fa-google icon icon-40 rad-3 bg-f2552c"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram icon icon-40 rad-3 bg-fe718b"></i></a></li>
-            </ul> -->
+            <ul class="list-inline m-t-15 m-b-20">
+              <li><button title="Facebook share" shareButton="facebook"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></button></li>
+              <li><button  title="LinkedIn Share" shareButton="linkedin"><i class="fab fa-linkedin-in icon icon-40 rad-3 bg-0e76a8"></i></button></li>
+              <li><button title="Twiiter share" shareButton="twitter"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></button></li>
+            </ul>
           </div>
         </div>
       </div>

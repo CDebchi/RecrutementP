@@ -2,7 +2,6 @@
   <div class="container">
     <div class="title-group line-default">
       <h1 class="selected">Job Detail</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore magna</p>
     </div>
     <div class="row">
         <div class="col-md-3 ">
@@ -11,10 +10,10 @@
                   <i class="far fa-building"></i>
                   <h4 class="heading">Company Home<br></h4>
                 </a>
-              <a class="thumb-item">
+              <!-- <a class="thumb-item">
                 <i class="fas fa-file-alt"></i>
                 <h4 class="heading">Company profile<br></h4>
-              </a>
+              </a> -->
               <a routerLink="/Company/ListJob" class="thumb-item">
                 <i class="far fa-sticky-note"></i>
                 <h4 class="heading">Manage jobs<br></h4>
@@ -29,6 +28,8 @@
         <div class="box p-40">
           <div></div>
           <h4 class="heading line-default line-default-left m-b-40 p-t-0 f-30 f-weight-500">{{LocalJob?.post}} Detail: {{LocalJob?.status}} 
+              
+            <div><button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-warning DeleteJob" ><i class="fas fa-edit"></i></button></div>
             <div *ngIf="LocalJob?.status !='Deleted'"><button (click)="DeleteJob(LocalJob?._id, LocalJob)" type="button" class="btn btn-danger DeleteJob"><i class="fas fa-times"></i></button></div>
             <div *ngIf="LocalJob?.status !='Active'"><button (click)="publishJob(LocalJob?._id, LocalJob)" type="button" class="btn btn-success DeleteJob"><i class="fas fa-check"></i></button></div>
           </h4>
@@ -55,9 +56,8 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-
         <div class="modal-body">
-            <form [formGroup]='job' class="box p-40"><!-- Nav tabs --><!-- Tab panes -->
+            <form [formGroup]='job' class="box p-40">
               <mat-form-field class="example-full-width">
                   <input matInput required type="text" class="form-item" name="post" formControlName="post">
                   <mat-error *ngIf="job.get('post').invalid">
@@ -90,7 +90,7 @@
   
                   <mat-form-field class="example-chip-list">
                     <mat-chip-list #chipList>
-                      <mat-chip *ngFor="let skill of job.controls['skills'].value;let i = index;" [selectable]="selectable"
+                      <mat-chip *ngFor="let skill of job?.controls['skills']?.value;let i = index;" [selectable]="selectable"
                                [removable]="removable" (removed)="remove(i)">
                         {{skill.skill}}
                         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>

@@ -7,3 +7,11 @@
 .container{
     margin-bottom: 100px;
 }
+.mtt{
+    margin-top: -100px;
+}
+.btn{
+    width: auto;
+    height: auto;
+    font-size: 12px;
+}

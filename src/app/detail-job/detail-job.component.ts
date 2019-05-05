@@ -21,24 +21,24 @@ export class DetailJobComponent implements OnInit {
     const key: String = this.dataRoute.snapshot.params['id'];
     if (localStorage.getItem('token')){
       this.user = this.Auth.connectedUser;
-    }
-    if (this.user.profile){
       this.pas.GetProfilById(this.user.profile).subscribe(res => {
         this.profile = res;
       })
-    }  
+    }      
     this.jas.GetJobById(key).subscribe(res => {
       this.job = res;
-      res['applied_profiles'].forEach(element => {
-        if(element == this.user['profile']){
-          console.log(true);
-          this.applyed= true          
-        }
-        else{
-          console.log(false);
-          this.applyed = false
-        }
-      });
+      if(localStorage.getItem('token')){
+        res['applied_profiles'].forEach(element => {
+          if(element == this.user['profile']){
+            console.log(true);
+            this.applyed= true          
+          }
+          else{
+            console.log(false);
+            this.applyed = false
+          }
+        });
+      }
       console.log(res);
     });
 

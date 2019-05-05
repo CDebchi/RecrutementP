@@ -1,3 +1,6 @@
+.job{
+    margin-top: 100px;
+}
 .example-header{
     margin-top: 200px;
 }
@@ -28,4 +31,9 @@
 }
 .table-filter label{
     margin-right: 5px;
+}
+.btn{
+    width: auto;
+    height: auto;
+    font-size: 12px;
 }

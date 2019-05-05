@@ -26,11 +26,11 @@ export class JobDetailComponent implements OnInit {
   LocalJob;
   LocalJob2;
   job : FormGroup;
-  
+  key;
   company_id;
 
   constructor(private dataRoute: ActivatedRoute, private router : Router, private cas : CompanyApiService, private auth : AuthService, private jas : JobApiService) {
-    const key: String = this.dataRoute.snapshot.params['id'];
+    this.key = this.dataRoute.snapshot.params['id'];
     this.token = this.auth.connectedUser;
     this.job = new FormGroup({
       post : new FormControl('',[Validators.required]),
@@ -40,25 +40,22 @@ export class JobDetailComponent implements OnInit {
       skills : new FormArray([])
     });
     this.company_id = this.token.company;
-    this.jas.GetJobById(key).subscribe(res => {
+    this.jas.GetJobById(this.key).subscribe(res => {
       this.LocalJob = res;
     })
    }
 
   ngOnInit() {
    
-    this.jas.GetJobById(localStorage.getItem('job')).subscribe(res => {
+    this.jas.GetJobById(this.key).subscribe(res => {
       this.LocalJob2 = res;
-      this.initSkills();
       const Local =  this.LocalJob2;
-       delete Local._id;
-       delete Local.__v;
-       delete Local.status;
-       delete Local.applied_profiles;
-       delete Local.owner;
-       delete Local.skills;
-       Local['skills'] = [];
-      this.job.setValue(Local);
+      this.initSkills();
+      this.job.controls.post.setValue(Local.post);
+      this.job.controls.type_job.setValue(Local.type_job);
+      this.job.controls.time_job.setValue(Local.time_job);
+      this.job.controls.job_description.setValue(Local.job_description);
+
     })
   }
   initSkills(){
@@ -99,7 +96,7 @@ export class JobDetailComponent implements OnInit {
   }
   UpdateJob(id,body){
     this.jas.UpdateJob(id, body.value).subscribe(res => {      
-      this.jas.GetJobById(localStorage.getItem('job')).subscribe(res => {
+      this.jas.GetJobById(this.key).subscribe(res => {
         this.LocalJob = res;
       })
     })

@@ -41,9 +41,6 @@ export class HomeComponent implements OnInit {
         localStorage.removeItem('token');
       }
     }
-    console.log(this.auth.verifToken())
-    // this.tableActive.push(this.AllJobActive[2]);
-    // console.log(this.AllJobActive[2]);
   }
 
   removeFakePathUrl(f) {     
@@ -52,8 +49,7 @@ export class HomeComponent implements OnInit {
     }  
   }
   setjob(id){
-    localStorage.setItem('job', id);
-    this.route.navigateByUrl('/JobDetail');
+    this.route.navigate(['/JobDetail', id]);
   }
 
 }

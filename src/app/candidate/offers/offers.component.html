@@ -3,9 +3,8 @@
     <div class="container  mat-elevation-z8">
       <div class="title-group line-default">
         <h2>Jobs</h2>
-        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore</p> -->
       </div>
-      <div class="example-header">
+      <div class="example-header"><!-- Filter -->
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field><br/>
@@ -52,8 +51,7 @@
         </div>        
       </div>
 
-      <div class="row justify-content-md-center">
-  
+      <div class="row justify-content-md-center">  
         <div class="col-sm-12"><!-- Blog-item -->
           <div class="box-item"  *ngFor="let job of dataSource?.filteredData | jobFilter:isChecked">
             <div class="row justify-content-md-center">

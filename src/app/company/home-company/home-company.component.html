@@ -13,10 +13,10 @@
                     <i class="far fa-building"></i>
                     <h4 class="heading">Company Home<br></h4>
                   </a>
-                <a class="thumb-item">
+                <!-- <a class="thumb-item">
                   <i class="fas fa-file-alt"></i>
                   <h4 class="heading">Company profile<br></h4>
-                </a>
+                </a> -->
                 <a routerLink="/Company/ListJob" class="thumb-item">
                   <i class="far fa-sticky-note"></i>
                   <h4 class="heading">Manage jobs<br></h4>
@@ -30,6 +30,9 @@
         <div class="col-sm-9 ">
           <div class="box-shadow-d p-30 bg-f">
             <div>
+              <div class="update-button">
+                  <div><button title="Update info" data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-warning DeleteJob" ><i class="fas fa-edit"></i></button></div>
+              </div>
               <ul class="list list-1x m-t-10">
                 <li><strong>Email Company</strong>{{company?.emailCompany}}</li>
                 <li><strong>Company Size</strong><span>{{company?.size}}</span></li>
@@ -68,3 +71,80 @@
       </div>
     </div>
   </section>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]='CompanyForm' class="box p-40"><!-- Nav tabs --><!-- Tab panes -->
+
+              <mat-form-field  class="example-full-width">
+                <input type="text" required matInput maxlength="20" class="form-item" placeholder="Company" name="nameCompany" formControlName="nameCompany">
+                <mat-error *ngIf="CompanyForm.get('nameCompany').invalid">
+                  Required!!
+                </mat-error>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width"> 
+                <input type="text" required matInput maxlength="80" class="form-item" placeholder="Adress" name="adress" formControlName="adress">
+                <mat-error *ngIf="CompanyForm.get('adress').invalid">
+                  Required!!
+                </mat-error>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput maxlength="80" class="form-item" placeholder="other Adress" name="otherAdress" formControlName="otherAdress">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput maxlength="8" minlength="8" class="form-item" placeholder="Phone" name="phone" formControlName="phone">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <label>{{Company.emailCompany}}</label>
+              </mat-form-field>
+      
+              <mat-form-field>
+                <select placeholder="Choose a size" matNativeControl required name="size" formControlName="size">
+                  <option disabled>Choose a size</option>
+                  <option value="[0..9]">Very small company</option>
+                  <option value="[10..99]">Small business</option>
+                  <option value="[100..999]">Big business</option>
+                  <option value="1000+">Very large company</option>
+                </select>
+                <mat-error *ngIf="CompanyForm.get('size').invalid">
+                  Required!!
+                </mat-error>
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput maxlength="80" class="form-item" placeholder="website" name="website" formControlName="website">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput maxlength="80" class="form-item" placeholder="facebook" name="facebook" formControlName="facebook">
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input type="text" matInput maxlength="80" class="form-item" placeholder="linkedin" name="linkedin" formControlName="linkedin">
+              </mat-form-field>
+      
+
+
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" formControlName="logo" (change)="filechangeEvent($event)" name="file" id="file"  />
+      
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button (click)="Register(CompanyForm);uploadFile()" [disabled]="CompanyForm.invalid" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

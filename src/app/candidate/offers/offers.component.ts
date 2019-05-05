@@ -63,7 +63,6 @@ pipeFilter(checked: boolean,filterValue: string, type:string){
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-    console.log(this.dataSource)
   }
   setjob(id){
     this.router.navigate(['/JobDetail', id]);

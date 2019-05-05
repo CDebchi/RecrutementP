@@ -25,7 +25,6 @@ export class JobFilterPipe implements PipeTransform {
       }
       return false;
     }
-
     return jobs.filter(job => {
       let jobTime;let jobType;
       if(checkSeach.jobTime.length > 0){
@@ -38,28 +37,7 @@ export class JobFilterPipe implements PipeTransform {
       }else{
         jobType = true;
       }
-     return (jobTime && jobType);
-
-      
+     return (jobTime && jobType);      
     })
-
-
-    //   let jobTime = [];
-    //   jobs.forEach(function(job){
-    //   checkSeach.forEach(function(value){
-    //     if(job.time_job.includes(value)){
-    //     console.log('test')
-    //     jobTime.push(job);
-    //     return true;
-    //   }
-    //   })
-    // })
-    //  return jobTime;
-
-
-        
-
-  }
-  
-
+   }
 }

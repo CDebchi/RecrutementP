@@ -12,7 +12,7 @@ export class CandidateComponent implements OnInit {
   constructor(private auth : AuthService) { }
 
   ngOnInit() {
-    // if ()
+   
   }
 
 }
